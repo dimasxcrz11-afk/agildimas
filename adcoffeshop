@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DA Coffee Shop - Cafe Aesthetic & Milenial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            color: #333;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px 40px;
+            background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(254,202,87,0.1));
+            border-radius: 20px;
+            margin: 30px 20px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .owner {
+            font-size: 18px;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .cafe-showcase {
+            margin: 0 20px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .showcase-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .showcase-image:hover {
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #ff6b6b;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #feca57);
+            border-radius: 2px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .menu-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-info {
+            padding: 20px;
+        }
+
+        .menu-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .menu-price {
+            font-size: 18px;
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .cafe-showcase {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">☕ DA Coffee Shop</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#bakar">Hidangan Bakar</a></li>
+                <li><a href="#makanan">Makanan</a></li>
+                <li><a href="#minuman">Minuman</a></li>
+                <li><a href="#snack">Snack</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero" id="home">
+        <h1>DA Coffee Shop</h1>
+        <p>Your Aesthetic Cafe Experience</p>
+        <p class="owner">Owner: Dimas Mahfudz Taufik</p>
+        
+        <div class="cafe-showcase">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=400&fit=crop" alt="Interior Cafe" class="showcase-image">
+            <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=600&h=400&fit=crop" alt="Makanan Cafe" class="showcase-image">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=400&fit=crop" alt="Minuman Cafe" class="showcase-image">
+            <img src="https://images.unsplash.com/photo-1495195129352-aeb325a55b65?w=600&h=400&fit=crop" alt="Snack Cafe" class="showcase-image">
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Hidangan Bakar -->
+        <div class="section" id="bakar">
+            <h2 class="section-title">🔥 Hidangan Bakar Spesial</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&h=300&fit=crop" alt="Ikan Bakar" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Ikan Bakar Kecap</div>
+                        <div class="menu-price">Rp 45.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?w=400&h=300&fit=crop" alt="Ayam Bakar" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Ayam Bakar Madu</div>
+                        <div class="menu-price">Rp 35.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&h=300&fit=crop" alt="Cumi Bakar" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Cumi Bakar Pedas</div>
+                        <div class="menu-price">Rp 40.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=300&fit=crop" alt="Sate Kambing" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Sate Kambing Bakar</div>
+                        <div class="menu-price">Rp 50.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=400&h=300&fit=crop" alt="Udang Bakar" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Udang Bakar Mentega</div>
+                        <div class="menu-price">Rp 55.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Makanan -->
+        <div class="section" id="makanan">
+            <h2 class="section-title">🍽️ Menu Makanan</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1603496987351-f84a3ba5ec85?w=400&h=300&fit=crop" alt="Nasi Goreng" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Nasi Goreng Spesial</div>
+                        <div class="menu-price">Rp 25.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400&h=300&fit=crop" alt="Mie Goreng" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Mie Goreng Jawa</div>
+                        <div class="menu-price">Rp 20.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop" alt="Pizza" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Pizza Margherita</div>
+                        <div class="menu-price">Rp 45.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop" alt="Burger" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Beef Burger Jumbo</div>
+                        <div class="menu-price">Rp 35.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1633964913295-ceb43826ab46?w=400&h=300&fit=crop" alt="Pasta" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Pasta Carbonara</div>
+                        <div class="menu-price">Rp 38.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&h=300&fit=crop" alt="Steak" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Chicken Steak</div>
+                        <div class="menu-price">Rp 42.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400&h=300&fit=crop" alt="Sushi" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Sushi Roll Set</div>
+                        <div class="menu-price">Rp 50.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop" alt="Soup" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Cream Soup</div>
+                        <div class="menu-price">Rp 22.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop" alt="Salad" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Caesar Salad</div>
+                        <div class="menu-price">Rp 28.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop" alt="Gado-gado" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Gado-Gado Jakarta</div>
+                        <div class="menu-price">Rp 20.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Minuman -->
+        <div class="section" id="minuman">
+            <h2 class="section-title">☕ Menu Minuman</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop" alt="Coffee Latte" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Caffe Latte</div>
+                        <div class="menu-price">Rp 22.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop" alt="Cappuccino" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Cappuccino</div>
+                        <div class="menu-price">Rp 20.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=400&h=300&fit=crop" alt="Matcha Latte" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Matcha Latte</div>
+                        <div class="menu-price">Rp 25.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&h=300&fit=crop" alt="Thai Tea" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Thai Tea</div>
+                        <div class="menu-price">Rp 18.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=300&fit=crop" alt="Smoothie" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Strawberry Smoothie</div>
+                        <div class="menu-price">Rp 23.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1553530979-7ee52a2670c4?w=400&h=300&fit=crop" alt="Milkshake" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Chocolate Milkshake</div>
+                        <div class="menu-price">Rp 25.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&h=300&fit=crop" alt="Lemon Tea" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Lemon Tea</div>
+                        <div class="menu-price">Rp 15.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1596010190091-7a2f8b73d4ff?w=400&h=300&fit=crop" alt="Mojito" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Mojito Fresh</div>
+                        <div class="menu-price">Rp 20.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&h=300&fit=crop" alt="Avocado Juice" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Avocado Juice</div>
+                        <div class="menu-price">Rp 22.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=400&h=300&fit=crop" alt="Hot Chocolate" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Hot Chocolate</div>
+                        <div class="menu-price">Rp 20.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Makanan Ringan -->
+        <div class="section" id="snack">
+            <h2 class="section-title">🍪 Makanan Ringan</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&h=300&fit=crop" alt="French Fries" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">French Fries</div>
+                        <div class="menu-price">Rp 15.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1628191081114-af8c0476cdad?w=400&h=300&fit=crop" alt="Onion Rings" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Onion Rings</div>
+                        <div class="menu-price">Rp 18.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=400&h=300&fit=crop" alt="Chicken Nuggets" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Chicken Nuggets</div>
+                        <div class="menu-price">Rp 20.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1628163226762-709b80eee931?w=400&h=300&fit=crop" alt="Spring Rolls" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Spring Rolls</div>
+                        <div class="menu-price">Rp 17.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1515023115689-589c33041d3c?w=400&h=300&fit=crop" alt="Nachos" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Nachos Cheese</div>
+                        <div class="menu-price">Rp 22.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1626844131082-256783844137?w=400&h=300&fit=crop" alt="Cookies" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Chocolate Cookies</div>
+                        <div class="menu-price">Rp 12.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=400&h=300&fit=crop" alt="Brownies" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Brownies Fudge</div>
+                        <div class="menu-price">Rp 15.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=400&h=300&fit=crop" alt="Donut" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Glazed Donut</div>
+                        <div class="menu-price">Rp 10.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1540337706094-da10342c93d8?w=400&h=300&fit=crop" alt="Waffle" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Belgian Waffle</div>
+                        <div class="menu-price">Rp 25.000</div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=300&fit=crop" alt="Croissant" class="menu-image">
+                    <div class="menu-info">
+                        <div class="menu-name">Butter Croissant</div>
+                        <div class="menu-price">Rp 18.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 DA Coffee Shop - Owned by Dimas Mahfudz Taufik</p>
+        <p>Your Aesthetic Cafe Experience ☕</p>
+    </footer>
+</body>
+</html>
